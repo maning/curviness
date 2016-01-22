@@ -9,6 +9,7 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+        
     </style>
 </head>
 <body>
@@ -39,38 +40,52 @@ section:last-child {
     border-bottom: none;
     margin-bottom: 200px;
 }
+
 </style>
 
 <div id='map'></div>
 <div id='features'>
     <section id='cover' class='active'>
-      <h2>50 years of River Curviness</h2>
-      <p>Bla, blah Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+      <h2>Changing Rivers</h2>
+      <p>We always settle along the rivers and coasts.  Rivers are rich and resources.  It allows us to trade with others. </br>
+	Through the years we have altered much of our waterways so much that. </br>
+	This map shows the changes in our river systems in the past 50 years.</p>
     
     </section>
     <section id='pampanga-delta'>
-        <h3>Pampanga Delta</h3>
-        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
-    </section>
-    <section id='pam-diversion'>
-        <h3>Diverting rivers</h3>
-        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+        <h3>Pampanga River Delta</h3>
+        <p>Pampanga river is the 2nd largest river in Luzon.  It receives almost a third of all rainwater coming from the mountain slopes of the surround region. </br>
+	  This delta is the main outlet of the river. It is low lying and shallow.  </br>
+	  <img src="img/Riverpampangajf.JPG" alt="montawal" width="100%"> </br>
+	  <a href='https://en.wikipedia.org/wiki/Pampanga_River#/media/File:Riverpampangajf.JPG'>Ramon FVelasquez, CC-BY-SA 3.0</a></br></br>
+	  The <strong>curviness of rivers shows that water flows through bay very slow</strong> causing flooding for almost 2 weeks during the peak of monsoon season Lorem </br>
+
+	</p>
     </section>
     <section id='fast'>
        <h3>Straight and fast moving waters</h3>
-        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+       <p><strong>Long and almost straight rivers means rapid water movement</strong>. During the monsoon period of 2013, a month's worth of rain poured in Cavite within
+	 24 hours.</br>
+	 Rainwater coming from the ridge of Tagaytay flowed through the coastal towns of Cavite, inundating many homes.  It less than a day, waters receded into the bay. </br>
+	 <img src="img/cavite-flooding-jd-diestro-20130819-001.jpg" alt="" width="100%"> </br>
+         <a href='http://www.rappler.com/nation/36848-cavite-habagat-floods'>Rappler, 2013</a></br></br>
+       </p>
     </section>
     <section id='curves'>
        <h3>Killer curves</h3>
-        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+       <p>Curvy rivers like this is dangerous for settlements.  During heavy rains, <strong>water will take the shortest route and "jump off" any bariers</strong>.</br>
+	 <img src="img/nangka.gif" alt="" width="100%"> </br>
+	 <a href='https://www.youtube.com/watch?v=WnUWe_qEVsU'>RizalynMP, 2009</a></br></br>
+       During Typhoon Ondoy (2009) residents living inside the bend were isolated because the only access was inundated by flood waters.</br></p>
+
     </section>
     <section id='change'>
         <h2>Ever Changing</h2>
-        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
-	     <img src="montawal.gif" alt="montawal" width="100%"> 
+        <p>Need</br>some</br>awesome </br> summary,</br>
+	<img src="img/montawal.gif" alt="montawal" width="100%"> </p>
 
         <small id="citation">
-          Story by Maning Sambale <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>.
+          Story by Maning Sambale <a href='https://github.com/maning/curviness'>Maning Sambale</a>.
 	  Data from <a href='http://www.osm.org'>OpenStreetMap</a> and <a href='http://www.namria.gov.ph/'>NAMRIA</a>.
         </small>
     </section>
@@ -87,7 +102,7 @@ var map = new mapboxgl.Map({
     pitch: 0
 });
 
-8.91/14.5656/121.1676
+
 
 var chapters = {
     'cover': {
@@ -103,18 +118,10 @@ var chapters = {
         zoom: 11.89,
         pitch: 48.72
     },
-    'pam-diversion': {
-        bearing: -8.00,
-        center: [120.781450, 15.220507],
-        zoom: 15.27,
-        speed: 0.6,
-        pitch: 31.78
-    },
-
     'fast': {
         bearing: 174.98,
         center: [120.888518, 14.389695],
-        zoom: 11.69,
+        zoom: 10.50,
         speed: 0.6,
         pitch: 47.20
      },
@@ -163,6 +170,7 @@ function isElementOnScreen(id) {
     var bounds = element.getBoundingClientRect();
     return bounds.top < window.innerHeight && bounds.bottom > 0;
 }
+
 
 </script>
 
