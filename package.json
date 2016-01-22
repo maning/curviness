@@ -1,0 +1,28 @@
+{
+  "name": "curviness",
+  "version": "0.0.1",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maning/curviness"
+  },
+  "dependencies": {
+    "fs": "0.0.2",
+    "geojson-flatten": "^0.1.0",
+    "minimist": "^1.1.1",
+    "rbush": "^1.4.2",
+    "tile-reduce": "^3.0.0",
+    "time": "^0.11.4",
+    "turf": "^2.0.2",
+    "turf-crosstrack": "git+ssh://git@github.com:jczaplew/turf-crosstrack.git",
+    "turf-point": "^2.0.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.2",
+    "eslint-config-mourner": "^1.0.1",
+    "geojson-validation": "^0.1.6",
+    "log-interceptor": "^1.0.0",
+    "tap": "^2.3.1"
+  }
+}
