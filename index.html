@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.4/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.4/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+#map {
+    position: fixed;
+    width:70%;
+}
+#features {
+    width: 30%;
+    margin-left: 70%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+}
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='cover' class='active'>
+      <h2>50 years of River Curviness</h2>
+      <p>Bla, blah Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+    
+    </section>
+    <section id='pampanga-delta'>
+        <h3>Pampanga Delta</h3>
+        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+    </section>
+    <section id='pam-diversion'>
+        <h3>Diverting rivers</h3>
+        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+    </section>
+    <section id='fast'>
+       <h3>Straight and fast moving waters</h3>
+        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+    </section>
+    <section id='curves'>
+       <h3>Killer curves</h3>
+        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+    </section>
+    <section id='change'>
+        <h2>Ever Changing</h2>
+        <p>Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem </br> Lorem</p>
+	     <img src="montawal.gif" alt="montawal" width="100%"> 
+
+        <small id="citation">
+          Story by Maning Sambale <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>.
+	  Data from <a href='http://www.osm.org'>OpenStreetMap</a> and <a href='http://www.namria.gov.ph/'>NAMRIA</a>.
+        </small>
+    </section>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFuaW5nIiwiYSI6IlhjWGNfdTQifQ.ras0nImWG638BCDSxU8bqw';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/maning/cijpf48va0018bfm2cs8ka6f3',
+    center: [121.1676,14.5656],
+    zoom: 8.9,
+    bearing: 0,
+    pitch: 0
+});
+
+8.91/14.5656/121.1676
+
+var chapters = {
+    'cover': {
+        bearing: 0,
+        center: [121.1676,14.5656],
+        zoom: 8.9,
+        pitch: 0
+    },
+    'pampanga-delta': {
+        duration: 6000,
+        center: [120.696862,14.833011],
+        bearing: 14.77,
+        zoom: 11.89,
+        pitch: 48.72
+    },
+    'pam-diversion': {
+        bearing: -8.00,
+        center: [120.781450, 15.220507],
+        zoom: 15.27,
+        speed: 0.6,
+        pitch: 31.78
+    },
+
+    'fast': {
+        bearing: 174.98,
+        center: [120.888518, 14.389695],
+        zoom: 11.69,
+        speed: 0.6,
+        pitch: 47.20
+     },
+
+    'curves': {
+        bearing: 81.09,
+        center: [121.111251 , 14.670389],
+        zoom: 16.75,
+        speed: 0.6,
+        pitch: 47.90
+    },
+    'change': {
+        bearing: 0,
+        center: [124.754513, 7.115260],
+        zoom: 12.10,
+        pitch: 0
+    }
+};
+
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'baker';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+
+</script>
+
+</body>
+</html>
+
