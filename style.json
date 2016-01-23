@@ -15,6 +15,10 @@
                 "name": "1950 (NAMRIA)",
                 "collapsed": true
             },
+            "1453544225186.3953": {
+                "name": "2010 (osm-others)",
+                "collapsed": true
+            },
             "1446699150601.9583": {
                 "name": "Group"
             },
@@ -46,7 +50,7 @@
                 "collapsed": true
             },
             "1453453772994.2058": {
-                "name": "2000 (OSM)",
+                "name": "2010 (osm-rivers)",
                 "collapsed": false
             },
             "1444856939874.5793": {
@@ -57,12 +61,12 @@
         "mapbox:trackposition": true
     },
     "center": [
-        122.99591462296053,
-        10.823302873570938
+        121.07095116888263,
+        14.664265407181063
     ],
-    "zoom": 14.708799794227874,
-    "bearing": 0,
-    "pitch": 0,
+    "zoom": 11.001141048305183,
+    "bearing": 96.23111162071858,
+    "pitch": 52.80428937460953,
     "sources": {
         "mapbox": {
             "url": "mapbox://mapbox.mapbox-streets-v6",
@@ -86,10 +90,7 @@
     "glyphs": "mapbox://fonts/maning/{fontstack}/{range}.pbf",
     "layers": [
         {
-            "id": "satellite",
-            "type": "raster",
-            "source": "satellite",
-            "source-layer": "mapbox_satellite_full",
+            "interactive": true,
             "paint.temp": {
                 "raster-fade-duration": 100
             },
@@ -108,22 +109,40 @@
                     ]
                 }
             },
-            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "type": "raster",
+            "source": "satellite",
+            "id": "satellite",
             "paint": {
-                "raster-opacity": 1,
-                "raster-brightness-min": 0,
-                "raster-brightness-max": 0.5,
-                "raster-contrast": 0.1,
-                "raster-saturation": 0.5
-            }
+                "raster-brightness-max": 1,
+                "raster-saturation": -1,
+                "raster-brightness-min": 0.4,
+                "raster-contrast": 0.5,
+                "raster-opacity": 1
+            },
+            "source-layer": "mapbox_satellite_full"
+        },
+        {
+            "type": "background",
+            "paint": {
+                "background-opacity": 0.3,
+                "background-color": "rgba(255,221,193,1)"
+            },
+            "layout": {
+                "visibility": "visible"
+            },
+            "id": "background",
+            "metadata": {},
+            "interactive": true
         },
         {
             "layout": {
-                "visibility": "visible",
+                "visibility": "none",
                 "line-cap": "round",
                 "line-join": "round"
             },
-            "metadata": {},
             "type": "line",
             "source": "mapbox://maning.namria_rivers",
             "id": "original",
@@ -157,6 +176,7 @@
             "interactive": true
         },
         {
+            "interactive": true,
             "minzoom": 16,
             "layout": {
                 "text-field": {
@@ -176,19 +196,19 @@
                     0,
                     1
                 ],
-                "symbol-placement": "line"
+                "symbol-placement": "line",
+                "visibility": "none"
             },
-            "metadata": {},
             "type": "symbol",
             "source": "mapbox://maning.namria_rivers",
             "id": "original copy",
             "paint": {
                 "text-color": "#40e0d0"
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
             "layout": {
                 "visibility": "none",
                 "line-join": "round",
@@ -231,10 +251,10 @@
                 },
                 "line-blur": 1
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
             "layout": {
                 "visibility": "none",
                 "line-join": "round",
@@ -285,10 +305,10 @@
                 },
                 "line-blur": 1
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
             "layout": {
                 "visibility": "none",
                 "line-join": "round",
@@ -339,10 +359,10 @@
                 },
                 "line-blur": 1
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
             "layout": {
                 "visibility": "none",
                 "line-join": "round",
@@ -385,56 +405,10 @@
                 },
                 "line-blur": 1
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
-            "layout": {
-                "visibility": "visible",
-                "line-join": "round",
-                "line-cap": "round"
-            },
-            "metadata": {
-                "mapbox:group": "1453453772994.2058"
-            },
-            "filter": [
-                ">",
-                "sinousity",
-                1.5
-            ],
-            "type": "line",
-            "source": "mapbox://maning.osm_rivers",
-            "id": "Meandering1",
-            "paint": {
-                "line-width": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            0,
-                            2
-                        ],
-                        [
-                            10,
-                            2
-                        ],
-                        [
-                            11,
-                            6
-                        ],
-                        [
-                            16,
-                            10
-                        ]
-                    ]
-                },
-                "line-opacity": 0.8,
-                "line-color": "#e34a33",
-                "line-blur": 2
-            },
-            "source-layer": "original",
-            "interactive": true
-        },
-        {
+            "interactive": true,
             "layout": {
                 "visibility": "visible",
                 "line-join": "round",
@@ -448,47 +422,39 @@
                 [
                     ">",
                     "sinousity",
-                    1.25
+                    1.49
                 ],
                 [
-                    "<=",
-                    "sinousity",
-                    1.5
+                    "==",
+                    "type",
+                    "river"
                 ]
             ],
             "type": "line",
             "source": "mapbox://maning.osm_rivers",
-            "id": "Twisty2",
+            "id": ">1.50",
             "paint": {
                 "line-width": {
                     "base": 1,
                     "stops": [
                         [
-                            0,
+                            8,
                             2
-                        ],
-                        [
-                            10,
-                            2
-                        ],
-                        [
-                            11,
-                            6
                         ],
                         [
                             16,
-                            10
+                            8
                         ]
                     ]
                 },
-                "line-opacity": 0.8,
-                "line-color": "#fc8d59",
-                "line-blur": 2
+                "line-opacity": 1,
+                "line-color": "#e31a1c",
+                "line-blur": 0.8
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
             "layout": {
                 "visibility": "visible",
                 "line-join": "round",
@@ -499,50 +465,251 @@
             },
             "filter": [
                 "all",
+                [
+                    ">",
+                    "sinousity",
+                    1.4
+                ],
+                [
+                    "<=",
+                    "sinousity",
+                    1.49
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.40 -1.49",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            8,
+                            2
+                        ],
+                        [
+                            16,
+                            8
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#eb551d",
+                "line-blur": 0.8
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453453772994.2058"
+            },
+            "filter": [
+                "all",
+                [
+                    ">",
+                    "sinousity",
+                    1.3
+                ],
+                [
+                    "<=",
+                    "sinousity",
+                    1.4
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.3-1.4",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            8,
+                            2
+                        ],
+                        [
+                            16,
+                            8
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#f3901e",
+                "line-blur": 0.8
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453453772994.2058"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1.3
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ],
+                [
+                    ">",
+                    "sinousity",
+                    1.25
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.25-1.30",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            8,
+                            2
+                        ],
+                        [
+                            16,
+                            8
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#fbcb20",
+                "line-blur": 0.8
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453453772994.2058"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1.25
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ],
+                [
+                    ">",
+                    "sinousity",
+                    1.1
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.1-1.25",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            8,
+                            2
+                        ],
+                        [
+                            16,
+                            8
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#e1de22",
+                "line-blur": 0.8
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453453772994.2058"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1.1
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ],
                 [
                     ">",
                     "sinousity",
                     1.05
-                ],
-                [
-                    "<=",
-                    "sinousity",
-                    1.25
                 ]
             ],
             "type": "line",
             "source": "mapbox://maning.osm_rivers",
-            "id": "Winding2",
+            "id": "1.05 - 1.10",
             "paint": {
                 "line-width": {
                     "base": 1,
                     "stops": [
                         [
-                            0,
+                            8,
                             2
-                        ],
-                        [
-                            10,
-                            2
-                        ],
-                        [
-                            11,
-                            6
                         ],
                         [
                             16,
-                            10
+                            8
                         ]
                     ]
                 },
-                "line-opacity": 0.8,
-                "line-color": "#fdcc8a",
-                "line-blur": 2
+                "line-opacity": 1,
+                "line-color": "#a7c925",
+                "line-blur": 0.8
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
             "layout": {
                 "visibility": "visible",
                 "line-join": "round",
@@ -552,43 +719,94 @@
                 "mapbox:group": "1453453772994.2058"
             },
             "filter": [
-                "<=",
-                "sinousity",
-                1.05
+                "all",
+                [
+                    ">",
+                    "sinousity",
+                    1
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ],
+                [
+                    "<=",
+                    "sinousity",
+                    1.05
+                ]
             ],
             "type": "line",
             "source": "mapbox://maning.osm_rivers",
-            "id": "Almost straight2",
+            "id": "1.0-1.05",
             "paint": {
                 "line-width": {
                     "base": 1,
                     "stops": [
                         [
-                            0,
+                            8,
                             2
-                        ],
-                        [
-                            10,
-                            2
-                        ],
-                        [
-                            11,
-                            6
                         ],
                         [
                             16,
-                            10
+                            8
                         ]
                     ]
                 },
-                "line-opacity": 0.8,
-                "line-color": "#fef0d9",
-                "line-blur": 2
+                "line-opacity": 1,
+                "line-color": "#6db428",
+                "line-blur": 0.8
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
         },
         {
+            "interactive": true,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453453772994.2058"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1
+                ],
+                [
+                    "==",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "<1",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            8,
+                            2
+                        ],
+                        [
+                            16,
+                            8
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#33a02c",
+                "line-blur": 0.8
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
             "minzoom": 16,
             "layout": {
                 "text-field": {
@@ -620,8 +838,449 @@
             "paint": {
                 "text-color": "#e34a33"
             },
-            "source-layer": "original",
-            "interactive": true
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    ">",
+                    "sinousity",
+                    1.49
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": ">1.50 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#e31a1c",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    ">",
+                    "sinousity",
+                    1.4
+                ],
+                [
+                    "<=",
+                    "sinousity",
+                    1.49
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.40 -1.49 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#eb551d",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    ">",
+                    "sinousity",
+                    1.3
+                ],
+                [
+                    "<=",
+                    "sinousity",
+                    1.4
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.3-1.4 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#f3901e",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1.3
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ],
+                [
+                    ">",
+                    "sinousity",
+                    1.25
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.25-1.30 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#fbcb20",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1.25
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ],
+                [
+                    ">",
+                    "sinousity",
+                    1.1
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.1-1.25 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#e1de22",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1.1
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ],
+                [
+                    ">",
+                    "sinousity",
+                    1.05
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.05 - 1.10 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#a7c925",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    ">",
+                    "sinousity",
+                    1
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ],
+                [
+                    "<=",
+                    "sinousity",
+                    1.05
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "1.0-1.05 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#6db428",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 12,
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "sinousity",
+                    1
+                ],
+                [
+                    "!=",
+                    "type",
+                    "river"
+                ]
+            ],
+            "type": "line",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "<1 copy",
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            10,
+                            1.2
+                        ],
+                        [
+                            18,
+                            2.2
+                        ]
+                    ]
+                },
+                "line-opacity": 1,
+                "line-color": "#33a02c",
+                "line-blur": 1
+            },
+            "source-layer": "original"
+        },
+        {
+            "interactive": true,
+            "minzoom": 16,
+            "layout": {
+                "text-field": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            "2010"
+                        ],
+                        [
+                            22,
+                            "2010"
+                        ]
+                    ]
+                },
+                "symbol-placement": "line",
+                "text-anchor": "bottom",
+                "text-offset": [
+                    0,
+                    2
+                ],
+                "visibility": "none"
+            },
+            "metadata": {
+                "mapbox:group": "1453544225186.3953"
+            },
+            "type": "symbol",
+            "source": "mapbox://maning.osm_rivers",
+            "id": "label copy",
+            "paint": {
+                "text-color": "#e34a33"
+            },
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -661,7 +1320,8 @@
                             20
                         ]
                     ]
-                }
+                },
+                "visibility": "none"
             },
             "metadata": {
                 "mapbox:group": "1444856567853.8965"
@@ -696,13 +1356,27 @@
                 "text-opacity": 0
             },
             "layout": {
-                "text-field": "{name_en}",
+                "text-size": {
+                    "stops": [
+                        [
+                            2,
+                            8
+                        ],
+                        [
+                            6,
+                            20
+                        ]
+                    ]
+                },
+                "text-allow-overlap": true,
+                "text-transform": "uppercase",
                 "text-font": [
                     "Open Sans Bold",
                     "Arial Unicode MS Bold"
                 ],
-                "text-transform": "uppercase",
-                "text-max-width": 4,
+                "text-padding": 0,
+                "visibility": "none",
+                "text-field": "{name_en}",
                 "text-letter-spacing": {
                     "base": 1,
                     "stops": [
@@ -716,20 +1390,7 @@
                         ]
                     ]
                 },
-                "text-padding": 0,
-                "text-allow-overlap": true,
-                "text-size": {
-                    "stops": [
-                        [
-                            2,
-                            8
-                        ],
-                        [
-                            6,
-                            20
-                        ]
-                    ]
-                }
+                "text-max-width": 4
             },
             "metadata": {
                 "mapbox:group": "1444856567853.8965"
@@ -797,7 +1458,8 @@
                             25
                         ]
                     ]
-                }
+                },
+                "visibility": "none"
             },
             "metadata": {
                 "mapbox:group": "1444856567853.8965"
@@ -1015,7 +1677,8 @@
             },
             "layout": {
                 "line-join": "bevel",
-                "line-cap": "round"
+                "line-cap": "round",
+                "visibility": "none"
             },
             "metadata": {
                 "mapbox:group": "1444857009211.682"
@@ -1077,7 +1740,8 @@
             },
             "layout": {
                 "line-join": "round",
-                "line-cap": "round"
+                "line-cap": "round",
+                "visibility": "none"
             },
             "metadata": {
                 "mapbox:group": "1444857009211.682"
@@ -1141,7 +1805,8 @@
             },
             "minzoom": 5,
             "layout": {
-                "line-join": "round"
+                "line-join": "round",
+                "visibility": "none"
             },
             "metadata": {
                 "mapbox:group": "1444857009211.682"
@@ -2002,7 +2667,7 @@
                     "Open Sans Bold",
                     "Arial Unicode MS Bold"
                 ],
-                "visibility": "visible",
+                "visibility": "none",
                 "text-field": {
                     "base": 1,
                     "stops": [
@@ -2051,7 +2716,7 @@
     ],
     "created": "2016-01-22T08:21:04.877Z",
     "id": "cijpf48va0018bfm2cs8ka6f3",
-    "modified": "2016-01-22T13:13:03.242Z",
+    "modified": "2016-01-23T12:43:06.415Z",
     "owner": "maning",
     "draft": false
 }
